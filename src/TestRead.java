@@ -1,6 +1,7 @@
 public class TestRead{
 	public static void main(String[] args){
-		UsuarioDao dao = new UsuarioDao();
+		Datasource dataSource = new Datasource();
+		UsuarioDao dao = new UsuarioDao(dataSource);
 
 		Usuario u = new Usuario();
 		u.setNome("Nete");
@@ -23,5 +24,11 @@ public class TestRead{
 		System.out.println(usuario.getEmail());
 		System.out.println(usuario.getEndereco());
 		System.out.println(usuario.getDataNascimento());
+
+		try{
+			dataSource.getConnection().close();
+		}catch(java.sql.SQLException e){
+			System.err.println("Erro ao fechar o banco!!!");
+		}
 	}
 }

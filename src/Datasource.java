@@ -42,5 +42,5 @@ public class Datasource{
 
 	public Connection getConnection(){
 		return this.connection;
-	}]
+	}
 }

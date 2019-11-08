@@ -8,8 +8,8 @@ import java.sql.Date;
 public class UsuarioDao implements GenericDao{
 	private Connection connection;
 
-	public UsuarioDao(){
-		connection = new Datasource().getConnection();
+	public UsuarioDao(Datasource datasource){
+		connection = datasource.getConnection();
 	}
 	
 	public void create(Object o){
@@ -63,7 +63,7 @@ public class UsuarioDao implements GenericDao{
 			stmt.setString(1, incompleto.getEmail());
 			stmt.setString(2, incompleto.getNome());
 
-			stmt.execute();
+			stmt.executeUpdate();
 
 			stmt.close();
 		}catch(SQLException e){
